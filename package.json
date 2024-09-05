@@ -17,7 +17,7 @@
 	"dependencies": {
 		"electron-updater": "^6.3.4",
 		"element-plus": "^2.8.1",
-		"pina": "^0.20.2204228",
+		"pinia": "^2.2.2",
 		"vue": "^3.5.1"
 	},
 	"devDependencies": {
