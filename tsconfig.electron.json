@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"esModuleInterop": true,
+		"rootDir": "electron",
+		"outDir": "dist_electron"
+	},
+	"include": [
+		"electron/index.ts", // 包含主进程文件
+		"electron/preload.ts" // 包含预加载脚本
+	]
+}
