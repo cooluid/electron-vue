@@ -5,7 +5,7 @@
 		"strict": true,
 		"esModuleInterop": true,
 		"rootDir": "electron",
-		"outDir": "dist_electron"
+		"outDir": "dist_electron",
 	},
 	"include": [
 		"electron/index.ts", // 包含主进程文件

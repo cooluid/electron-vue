@@ -10,7 +10,7 @@
 		"dev:electron": "wait-on http://localhost:5173 && cross-env IS_DEV=true electron .",
 		"build": "run-s clean build:vite build:electron",
 		"build:vite": "vue-tsc -b && vite build",
-		"build:electron": "tsc -b tsconfig.electron.json",
+		"build:electron": "tsc -b tsconfig.electron.json --force",
 		"pack:mac": "run-s build && electron-builder --mac",
 		"postinstall": "electron-builder install-app-deps"
 	},
