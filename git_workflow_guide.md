@@ -120,3 +120,14 @@ git merge <分支名> --allow-unrelated-histories
 ```
 
 注意：使用此选项时要谨慎，确保您理解合并的影响。
+
+## 删除远程仓库引用
+
+当远程仓库被删除后，需要手动从本地配置中删除对应的引用
+
+```bash
+删除特定的远程仓库引用
+git remote remove <远程名>
+清理不存在的远程分支引用
+git remote prune <远程名>
+```
