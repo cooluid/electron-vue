@@ -38,6 +38,8 @@ git merge <要合并的分支名>
 git branch -d <分支名>
 删除远程分支
 git push <远程名> --delete <分支名>
+清理已经不存在的远程分支引用
+git remote prune <远程名>
 ```
 
 ### 更改和提交
