@@ -131,3 +131,27 @@ git remote remove <远程名>
 清理不存在的远程分支引用
 git remote prune <远程名>
 ```
+
+## 创建新的私有仓库分支
+
+从现有项目创建新的私有仓库分支：
+
+1. 在 GitHub 上创建新的私有仓库
+2. 添加新的远程仓库：
+   ```bash
+   git remote add private <新仓库URL>
+   ```
+3. 基于 main 分支创建新的私有分支：
+   ```bash
+   git checkout main
+   git checkout -b private-branch
+   ```
+4. 推送新分支到私有仓库：
+   ```bash
+   git push -u private private-branch
+   ```
+5. 验证设置：
+   ```bash
+   git remote -v
+   git branch -a
+   ```
