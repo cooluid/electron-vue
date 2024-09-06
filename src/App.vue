@@ -8,7 +8,7 @@ const isDark = useDark();
 watch(
 	isDark,
 	(dark) => {
-		console.log(`isDark`, dark);
+
 		if (dark) {
 			document.documentElement.classList.add("dark");
 		} else {

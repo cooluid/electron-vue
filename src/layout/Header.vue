@@ -2,25 +2,29 @@
 	<div class="header">
 		<div class="title-bar">
 			<div class="drag-area" />
-			<IconItem
-				icon="#icon-guanbi"
-				:size="16"
-				@click="closeApp"
-				class="no-drag close-btn"
-			/>
+			<IconItem icon="#icon-guanbi" :size="16" @click="closeApp" class="no-drag close-btn" />
 		</div>
 		<div class="icon-bar">
 			<IconItem icon="#icon-shezhi" :size="20" />
-			<IconItem icon="#icon-a-zu4" :size="18" />
+			<IconItem :icon="themeIcon" :size="18" @click="setTheme" />
 		</div>
 	</div>
 </template>
 
 <script setup lang="ts">
 import IconItem from "@/components/com/IconItem.vue";
-
+import { useDark, useToggle } from "@vueuse/core";
+import { computed } from "vue";
 const closeApp = () => {
 	window.electronAPI.invoke("close-window");
+};
+
+const isDark = useDark();
+const toggleDark = useToggle(isDark);
+const themeIcon = computed(() => (isDark.value ? "#icon-a-zu4" : "#icon-icon_qingtian"));
+const setTheme = () => {
+	toggleDark();
+	console.log(isDark.value);
 };
 </script>
 
@@ -63,7 +67,7 @@ const closeApp = () => {
 	flex-direction: row;
 	justify-content: flex-start;
 	align-items: center;
-	gap: 5px;
+	gap: 10px;
 	padding: 5px 0 5px 10px;
 }
 </style>
