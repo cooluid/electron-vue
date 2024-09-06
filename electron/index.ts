@@ -19,7 +19,9 @@ async function createWindow() {
 		mainWindow = null;
 	});
 
-	// createDevToolsWindow();
+	if (isDev) {
+		createDevToolsWindow();
+	}
 
 	await loadAppContent(isDev);
 }
@@ -32,6 +34,7 @@ function getWindowOptions(isDev: boolean): Electron.BrowserWindowConstructorOpti
 		fullscreenable: true,
 		maximizable: false,
 		movable: true,
+		frame: false,
 		webPreferences: {
 			contextIsolation: true,
 			nodeIntegration: false,
@@ -88,6 +91,7 @@ function setupIpcHandlers() {
 	ipcMain.handle('close-app', handleCloseApp);
 	ipcMain.handle('get-app-version', handleGetAppVersion);
 	ipcMain.handle('read-file', handleReadFile);
+	ipcMain.handle('close-window', handleCloseWindow);
 }
 
 function removeIpcHandlers() {
@@ -101,6 +105,7 @@ function removeIpcHandlers() {
 	ipcMain.removeHandler('close-app');
 	ipcMain.removeHandler('get-app-version');
 	ipcMain.removeHandler('read-file');
+	ipcMain.removeHandler('close-window');
 }
 
 // 新的处理函数
@@ -130,6 +135,10 @@ function handleReadFile(event: Electron.IpcMainInvokeEvent, filePath: string) {
 
 function handleCloseApp() {
 	app.quit();
+}
+
+function handleCloseWindow() {
+	mainWindow!.close();
 }
 
 async function handleReadFiles(event: Electron.IpcMainInvokeEvent, dirPath: string, suffix = ".json") {

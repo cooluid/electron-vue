@@ -83,10 +83,11 @@ function createWindow() {
                         closeDevToolsWindow();
                         mainWindow = null;
                     });
-                    // createDevToolsWindow();
+                    if (isDev) {
+                        createDevToolsWindow();
+                    }
                     return [4 /*yield*/, loadAppContent(isDev)];
                 case 1:
-                    // createDevToolsWindow();
                     _a.sent();
                     return [2 /*return*/];
             }
@@ -101,6 +102,7 @@ function getWindowOptions(isDev) {
         fullscreenable: true,
         maximizable: false,
         movable: true,
+        frame: false,
         webPreferences: {
             contextIsolation: true,
             nodeIntegration: false,
@@ -164,6 +166,7 @@ function setupIpcHandlers() {
     electron_1.ipcMain.handle('close-app', handleCloseApp);
     electron_1.ipcMain.handle('get-app-version', handleGetAppVersion);
     electron_1.ipcMain.handle('read-file', handleReadFile);
+    electron_1.ipcMain.handle('close-window', handleCloseWindow);
 }
 function removeIpcHandlers() {
     electron_1.ipcMain.removeHandler("dialog:openDirectory");
@@ -176,6 +179,7 @@ function removeIpcHandlers() {
     electron_1.ipcMain.removeHandler('close-app');
     electron_1.ipcMain.removeHandler('get-app-version');
     electron_1.ipcMain.removeHandler('read-file');
+    electron_1.ipcMain.removeHandler('close-window');
 }
 // 新的处理函数
 function handleOpenDirectory() {
@@ -202,6 +206,9 @@ function handleReadFile(event, filePath) {
 }
 function handleCloseApp() {
     electron_1.app.quit();
+}
+function handleCloseWindow() {
+    mainWindow.close();
 }
 function handleReadFiles(event_1, dirPath_1) {
     return __awaiter(this, arguments, void 0, function (event, dirPath, suffix) {

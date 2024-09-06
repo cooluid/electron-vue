@@ -1,8 +1,18 @@
 <template>
-  <div>
-    <h1>Home</h1>
+  <div class="home">
+    <MainLayout>
+      content
+    </MainLayout>
   </div>
 </template>
 
 <script setup lang="ts">
+import MainLayout from '@/layout/MainLayout.vue'
 </script>
+
+<style scoped>
+.home {
+  width: 100%;
+  height: 100%;
+}
+</style>
