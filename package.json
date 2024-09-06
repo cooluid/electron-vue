@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"main": "dist_electron/index.js",
 	"scripts": {
-		"clean": "rimraf dist dist_electron release",
+		"clean": "rimraf dist dist_electron release *.tsbuildinfo",
 		"dev": "run-p dev:vite dev:electron",
 		"dev:vite": "vite",
 		"dev:electron": "wait-on http://localhost:5173 && cross-env IS_DEV=true electron .",

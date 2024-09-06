@@ -19,7 +19,7 @@ async function createWindow() {
 		mainWindow = null;
 	});
 
-	if (isDev) {
+	if (isDev || process.env.DEBUG === "true") {
 		createDevToolsWindow();
 	}
 

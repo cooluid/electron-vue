@@ -83,7 +83,7 @@ function createWindow() {
                         closeDevToolsWindow();
                         mainWindow = null;
                     });
-                    if (isDev) {
+                    if (isDev || process.env.DEBUG === "true") {
                         createDevToolsWindow();
                     }
                     return [4 /*yield*/, loadAppContent(isDev)];
