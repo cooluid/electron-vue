@@ -98,7 +98,7 @@ function getWindowOptions(isDev) {
     return {
         width: 800,
         height: 600,
-        resizable: false,
+        resizable: true,
         fullscreenable: true,
         maximizable: false,
         movable: true,
